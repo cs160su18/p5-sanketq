@@ -1,0 +1,19 @@
+{% extends "life/base_generic.html" %}
+
+{% block content %}
+    <h1>Deals: </h1>
+
+    {% if deal_list %}
+    <ul>
+
+      {% for deal in deal_list %}
+      <li>
+        <a href="{{ deal.get_absolute_url }}">{{ deal.name }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no deals available.</p>
+    {% endif %}       
+{% endblock %}

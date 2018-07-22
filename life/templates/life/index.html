@@ -1,20 +1,12 @@
-{% load static %}
+{% extends "life/base_generic.html" %}
 
-<!DOCTYPE html>
+{% block content %}
+<h1>ShopSmart</h1>
 
-<html>
-	<head>
-		<title></title>
+  <p>Great deals without the hassle.</p>
 
-		<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{% static '/life/vendors/bootstrap/css/bootstrap.css' %}" />
-		<link rel="stylesheet" type="text/css" href="{% static '/life/css/main.css' %}" />
+<h2>Results:</h2>
 
-		<script src="{% static '/life/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
-		<script src="{% static '/life/vendors/jquery-ui/jquery-ui.min.js' %}"></script>
-	</head>
-	<body>
-		<!-- Your layout here -->
+  <p>So far, Users have logged {{ num_items }} items and we have found {{ num_deals }} deals to save them money! </p>
 
-	</body>
-</html>
+{% endblock %}

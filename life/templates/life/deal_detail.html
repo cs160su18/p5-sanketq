@@ -1,0 +1,7 @@
+{% extends "life/base_generic.html" %}
+
+{% block content %}
+  <h1>{{ deal.name }}</h1>
+  <h4>Available from {{deal.start_date}} to {{deal.end_date}}</h4>
+  <p>{{ deal.description }}</p>
+{% endblock %}
