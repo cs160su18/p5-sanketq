@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+
 
 class Deal(models.Model):
     name = models.CharField(max_length=100)
@@ -27,3 +29,12 @@ class Item(models.Model):
 
     def get_absolute_url(self):
         return reverse('item-detail', args=[str(self.id)])
+
+
+class Shopping_List(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    items = models.ManyToManyField('Item')
+
+class History(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    items = models.ManyToManyField('Item')

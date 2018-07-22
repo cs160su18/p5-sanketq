@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
   
-  {% block title %}<title>Local Library</title>{% endblock %}
+  {% block title %}<title>ShopSmart</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
@@ -27,8 +27,14 @@
         {% block sidebar %}
           <ul class="sidenav">
               <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'shopping_list' %}">My Shopping List</a></li>
               <li><a href="{% url 'items' %}">All items</a></li>
               <li><a href="{% url 'deals' %}">All deals</a></li>
+              {% if user.is_authenticated %}
+                <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>   
+              {% else %}
+                <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>   
+              {% endif %} 
           </ul>
        {% endblock %}
       </div>
