@@ -30,11 +30,7 @@ class Item(models.Model):
     def get_absolute_url(self):
         return reverse('item-detail', args=[str(self.id)])
 
-
-class Shopping_List(models.Model):
+class Shopper(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    items = models.ManyToManyField('Item')
-
-class History(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    items = models.ManyToManyField('Item')
+    shopping_list = models.ManyToManyField('Item', related_name='shoppinglist_requests_created')
+    history = models.ManyToManyField('Item', related_name='history_requests_created')

@@ -15,5 +15,4 @@ from life.models import *
 # Register your models here.
 admin.site.register(Item)
 admin.site.register(Deal)
-admin.site.register(Shopping_List)
-admin.site.register(History)
+admin.site.register(Shopper)

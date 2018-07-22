@@ -19,15 +19,19 @@ class ShoppingListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         u = self.request.user
-        return u.shopping_list.items.all()
+        shopping_list = u.shopper.shopping_list
+        if shopping_list:
+            return shopping_list.all()
+        return Item.objects.all()
 
 class ItemListView(LoginRequiredMixin, generic.ListView):
     model = Item
 
     def get_queryset(self):
         u = self.request.user
-        if u.history:
-            return u.history.items.all()
+        history = u.shopper.history
+        if history:
+            return history.all()
         return Item.objects.all()
 
 class ItemDetailView(LoginRequiredMixin, generic.DetailView):
