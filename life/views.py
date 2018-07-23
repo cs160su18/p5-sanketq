@@ -57,6 +57,11 @@ class ItemListView(LoginRequiredMixin, generic.ListView):
             return u.history.all()
         return None
 
+    def get_context_data(self, **kwargs):
+        context = super(ItemListView, self).get_context_data(**kwargs)
+        context['is_item_list'] = True
+        return context
+
 
 class ItemDetailView(LoginRequiredMixin, generic.DetailView):
     model = Item
@@ -92,7 +97,7 @@ class ShoppingListAddView(LoginRequiredMixin, generic.DetailView):
         u = self.request.user.profile
         u.shopping_list.add(item)
         u.save()
-
+        context['is_item_list'] = False
         return context
 
 class DealListView(LoginRequiredMixin, generic.ListView):

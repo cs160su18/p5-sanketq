@@ -17,6 +17,8 @@
       <p>There are no items available.</p>
     {% endif %} 
 
-    <p> Couldn't find the item you wanted? <a href="add/">Add a new one</a>. </p>
-
+    {% if is_item_list %}
+      <p> Couldn't find the item you wanted? <a href="add/">Add a new one</a>. </p>
+    {% endif %}
+    
 {% endblock %}
