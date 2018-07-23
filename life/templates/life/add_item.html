@@ -1,0 +1,22 @@
+{% extends "life/base_generic.html" %}
+{% block content %}
+
+    <form action="{{add_item}}" method="post">
+        {% csrf_token %}
+
+        <h1> Add New Item </h1>
+        <br>
+        <div class="container mb-5">
+            <div class="row">
+                {% for field in form  %}
+                    <div class="col-sm-6">
+                        <b>{{ field.label_tag }}</b>  {{ field }} 
+                        <br><br>
+                    </div>
+                {% endfor %}
+            </div>  
+        </div>
+        <input type="submit" value="Submit" />
+    </form>
+
+{% endblock %}

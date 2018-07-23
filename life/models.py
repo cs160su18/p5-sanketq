@@ -30,7 +30,15 @@ class Item(models.Model):
     def get_absolute_url(self):
         return reverse('item-detail', args=[str(self.id)])
 
-class Shopper(models.Model):
+    def get_shopping_list_url(self):
+        return reverse('shopping-list-add', args=[str(self.id)])
+
+    @classmethod
+    def create(cls, name, price):
+        item = cls(name=name, price=price)
+        return item
+
+class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     shopping_list = models.ManyToManyField('Item', related_name='shoppinglist_requests_created')
     history = models.ManyToManyField('Item', related_name='history_requests_created')

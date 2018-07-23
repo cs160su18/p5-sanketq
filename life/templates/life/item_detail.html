@@ -3,6 +3,7 @@
 {% block content %}
   <h1>Name: {{ item.name }}</h1>
   <h3>Price: {{ item.price }}</h3>
+
   <br>
   <h3><u> We found these deals: </u></h3>
     {% for deal in deal_list %}
@@ -10,5 +11,8 @@
         <a href="{{ deal.get_absolute_url }}">{{ deal.name }}</a>
       </li>
     {% endfor %}
-
+    <br><br>
+    {% if addable %}
+        <a href="{{ item.get_shopping_list_url }}">Add {{item.name}} to your shopping list.</a>
+    {% endif %}
 {% endblock %}
